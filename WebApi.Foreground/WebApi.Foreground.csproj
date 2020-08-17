@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>WebApi.Foreground.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Compile Remove="log\**" />
+    <Compile Remove="Models\.config\**" />
+    <Compile Remove="Models\bin\**" />
+    <Compile Remove="Models\logs\**" />
+    <Compile Remove="Models\log\**" />
+    <Content Remove="logs\**" />
+    <Content Remove="log\**" />
+    <Content Remove="Models\.config\**" />
+    <Content Remove="Models\bin\**" />
+    <Content Remove="Models\logs\**" />
+    <Content Remove="Models\log\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <EmbeddedResource Remove="log\**" />
+    <EmbeddedResource Remove="Models\.config\**" />
+    <EmbeddedResource Remove="Models\bin\**" />
+    <EmbeddedResource Remove="Models\logs\**" />
+    <EmbeddedResource Remove="Models\log\**" />
+    <None Remove="logs\**" />
+    <None Remove="log\**" />
+    <None Remove="Models\.config\**" />
+    <None Remove="Models\bin\**" />
+    <None Remove="Models\logs\**" />
+    <None Remove="Models\log\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApi\WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="WebApi.Foreground.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>
