@@ -84,7 +84,7 @@ namespace Adai.Core
 
 			//记得向IUSER授予完全控制权限，以便IIS可以向该文件夹写入文件。
 			//虚拟目录
-			var virtualDir = string.Format("{0}\\{1}", UploadDirectory, DateTime.Now.ToString("yyyy-MM-dd"));
+			var virtualDir = string.Format("{0}/{1}", UploadDirectory, DateTime.Now.ToString("yyyy-MM-dd"));
 			//物理路径
 			var physicalPath = Path.Combine(rootPath, virtualDir);
 			if (!Directory.Exists(physicalPath))

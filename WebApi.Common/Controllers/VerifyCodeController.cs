@@ -22,6 +22,28 @@ namespace WebApi.Common.Controllers
 		}
 
 		/// <summary>
+		/// 生成图片验证码
+		/// </summary>
+		/// <param name="guid"></param>
+		/// <returns></returns>
+		[HttpGet("Generate1/{guid}")]
+		public void Generate1(string guid)
+		{
+			Response.GenerateImageCode(guid);
+		}
+
+		/// <summary>
+		/// 生成图片验证码
+		/// </summary>
+		/// <param name="guid"></param>
+		/// <returns></returns>
+		[HttpGet("Generate2/{guid}")]
+		public void Generate2(string guid)
+		{
+			Response.GenerateImageCode(guid);
+		}
+
+		/// <summary>
 		/// 验证图片验证码
 		/// </summary>
 		/// <returns></returns>

@@ -54,6 +54,13 @@ namespace WebApi
 				.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
 				.AddDataAnnotationsLocalization();
 
+			//添加转接头中间件
+			services.Configure<ForwardedHeadersOptions>(options =>
+			{
+				options.ForwardedHeaders =
+					ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+			});
+
 			services.Configure<RequestLocalizationOptions>(options =>
 			{
 				var supportedCultures = new List<CultureInfo>
@@ -124,11 +131,15 @@ namespace WebApi
 				env.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
 			}
 
+			//启用转接头中间件
+			app.UseForwardedHeaders();
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
 			else
+
 			{
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
@@ -147,12 +158,6 @@ namespace WebApi
 			app.UseStaticFiles();
 			//启用CookiePolicy
 			//app.UseCookiePolicy();
-
-			//启用ForwardHeaders
-			app.UseForwardedHeaders(new ForwardedHeadersOptions()
-			{
-				ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-			});
 
 			//使中间件服务生成Swagger作为JSON端点
 			app.UseSwagger();
