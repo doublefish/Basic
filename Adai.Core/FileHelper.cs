@@ -82,11 +82,11 @@ namespace Adai.Core
 				throw new Exception("没有需要上传的文件");
 			}
 
-			//记得向IUSER授予完全控制权限，以便IIS可以向该文件夹写入文件。
 			//虚拟目录
-			var virtualDir = string.Format("{0}/{1}", UploadDirectory, DateTime.Now.ToString("yyyy-MM-dd"));
+			var dir = DateTime.Now.ToString("yyyy-MM-dd");
+			var virtualDir = string.Format("{0}/{1}", UploadDirectory, dir);
 			//物理路径
-			var physicalPath = Path.Combine(rootPath, virtualDir);
+			var physicalPath = Path.Combine(rootPath, UploadDirectory, dir);
 			if (!Directory.Exists(physicalPath))
 			{
 				Directory.CreateDirectory(physicalPath);
