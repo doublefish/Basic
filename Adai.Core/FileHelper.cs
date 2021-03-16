@@ -141,20 +141,20 @@ namespace Adai.Core
 			var timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 
 			//文件目录
-			var folderPath = string.Format("{0}\\{1}", rootPath, DownloadDirectory);
+			var folderPath = Path.Combine(rootPath, DownloadDirectory);
 			//临时文件夹路径
-			var tempFolderPath = string.Format("{0}\\{1}", folderPath, timestamp);
+			var tempFolderPath = Path.Combine(folderPath, timestamp);
 			//创建临时文件夹
 			Directory.CreateDirectory(tempFolderPath);
 
 			foreach (var kv in files)
 			{
-				var sourceFileName = Path.Combine(rootPath, kv.Value);
+				var sourceFileName = kv.Value;
 				if (!File.Exists(sourceFileName))
 				{
 					continue;
 				}
-				var destFileName = string.Format("{0}\\{1}", tempFolderPath, kv.Key);
+				var destFileName = Path.Combine(tempFolderPath, kv.Key);
 				File.Copy(sourceFileName, destFileName);
 			}
 
@@ -163,7 +163,8 @@ namespace Adai.Core
 			RARHelper.Compress(tempFolderPath, folderPath, fileName);
 			//清空临时文件夹
 			Directory.Delete(tempFolderPath, true);
-			return string.Format("{0}\\{1}", folderPath, fileName);
+			var filePath = Path.Combine(folderPath, fileName);
+			return filePath;
 		}
 
 		/// <summary>
@@ -230,6 +231,18 @@ namespace Adai.Core
 				FileName = HttpUtility.UrlEncode(name, Encoding.UTF8)
 			};
 			return response;
+		}
+
+		/// <summary>
+		/// 转换为物理路径
+		/// </summary>
+		/// <param name="path"></param>
+		/// <param name="separator"></param>
+		/// <returns></returns>
+		public static string ToPhysicalPath(string path, char separator = '/')
+		{
+			var paths = path.Split(separator);
+			return Path.Combine(paths);
 		}
 
 		/// <summary>

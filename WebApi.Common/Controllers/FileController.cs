@@ -107,18 +107,21 @@ namespace WebApi.Common.Controllers
 			string path;
 			if (idArr.Count > 1)
 			{
-				var results = new FileBLL().ListByPks(idArr);
+				var datas = new FileBLL().ListByPks(idArr);
 				var files = new Dictionary<string, string>();
-				foreach (var result in results)
+				foreach (var data in datas)
 				{
-					files.Add(result.Code, result.Path.Replace("/", "\\"));
+					var temp = FileHelper.ToPhysicalPath(data.Path);
+					temp = Path.Combine(WebHostEnvironment.WebRootPath, temp);
+					files.Add(data.Code, temp);
 				}
 				path = FileHelper.Compress(WebHostEnvironment.WebRootPath, files);
 			}
 			else
 			{
 				var data = new FileBLL().Get(idArr.FirstOrDefault());
-				path = Path.Combine(WebHostEnvironment.WebRootPath, data.Path.Replace("/", "\\"));
+				var temp = FileHelper.ToPhysicalPath(data.Path);
+				path = Path.Combine(WebHostEnvironment.WebRootPath, temp);
 			}
 
 			if (!System.IO.File.Exists(path))

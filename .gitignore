@@ -10,6 +10,7 @@
 *.userosscache
 *.sln.docstates
 wwwroot/upload/
+wwwroot/download/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -341,3 +342,4 @@ ASALocalRun/
 /WebApi.Background/WebApi.Background.xml
 /WebApi.Common/WebApi.Common.xml
 /WebApi.Foreground/WebApi.Foreground.xml
+/WebApi.Common/wwwroot/download/20210316155717723.rar

@@ -27,13 +27,15 @@
 
 #引入镜像
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+#设置时区
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 #设定工作目录
 WORKDIR /app
 #在容器中程序使用的端口，一定要和程序启动使用的端口对应上
 EXPOSE 80
 EXPOSE 443
 #复制文件到工作目录
-COPY . .
+COPY . /app
 #启动程序
 ENTRYPOINT ["dotnet", "WebApi.Background.dll"]
 

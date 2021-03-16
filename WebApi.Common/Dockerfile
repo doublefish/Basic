@@ -27,6 +27,9 @@
 
 #引入镜像
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+#设置时区
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+#安装图形处理程序
 RUN apt-get update && apt-get install -y libgdiplus
 #设定工作目录
 WORKDIR /app
@@ -34,6 +37,6 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 #复制文件到工作目录
-COPY . .
+COPY . /app
 #启动程序
 ENTRYPOINT ["dotnet", "WebApi.Common.dll"]
