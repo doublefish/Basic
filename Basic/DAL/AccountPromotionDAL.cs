@@ -46,16 +46,6 @@ namespace Basic.DAL
 		/// <returns></returns>
 		public override ISugarQueryable<AccountPromotion> Query(PromotionArg<AccountPromotion> arg, ISugarQueryable<AccountPromotion> query)
 		{
-			//代理商用户推广的
-			if (arg.ByAgent)
-			{
-				query = query.Where(o => o.AgentId != null);
-			}
-			//个人用户推广的
-			if (arg.ByPersonal)
-			{
-				query = query.Where(o => o.PromoterId != null);
-			}
 			//用户Id
 			if (arg.AccountId.HasValue)
 			{
@@ -71,31 +61,6 @@ namespace Basic.DAL
 			{
 				query = query.Where(o => SqlFunc.Subqueryable<Account>().Where(a => a.Id == o.AccountId && a.Mobile == arg.Mobile).Any());
 			}
-			//代理商Id
-			if (arg.AgentId.HasValue)
-			{
-				query = query.Where(o => o.AgentId == arg.AgentId.Value);
-			}
-			//代理商名称
-			if (!string.IsNullOrEmpty(arg.AgentName))
-			{
-				query = query.Where(o => o.AgentId != null && SqlFunc.Subqueryable<Agent>().Where(a => a.Id == o.AgentId && a.Name.Contains(arg.AgentName)).Any());
-			}
-			//代理商用户Id
-			if (arg.AgentUserId.HasValue)
-			{
-				query = query.Where(o => o.AgentUserId == arg.AgentUserId.Value);
-			}
-			//代理商用户名
-			if (!string.IsNullOrEmpty(arg.AgentUsername))
-			{
-				query = query.Where(o => SqlFunc.Subqueryable<AgentUser>().Where(au => au.Id == o.AgentUserId && au.Username == arg.AgentUsername).Any());
-			}
-			//代理商用户手机号码
-			if (!string.IsNullOrEmpty(arg.AgentUserMobile))
-			{
-				query = query.Where(o => SqlFunc.Subqueryable<AgentUser>().Where(au => au.Id == o.AgentUserId && au.Mobile == arg.AgentUserMobile).Any());
-			}
 			//推广人Id
 			if (arg.PromoterId.HasValue)
 			{
@@ -104,12 +69,12 @@ namespace Basic.DAL
 			//推广人用户名
 			if (!string.IsNullOrEmpty(arg.PromoterUsername))
 			{
-				query = query.Where(o => o.PromoterId != null && SqlFunc.Subqueryable<Account>().Where(a => a.Id == o.PromoterId && a.Username == arg.PromoterUsername).Any());
+				query = query.Where(o => SqlFunc.Subqueryable<Account>().Where(a => a.Id == o.PromoterId && a.Username == arg.PromoterUsername).Any());
 			}
 			//推广人手机号码
 			if (!string.IsNullOrEmpty(arg.PromoterMobile))
 			{
-				query = query.Where(o => o.PromoterId != null && SqlFunc.Subqueryable<Account>().Where(a => a.Id == o.PromoterId && a.Mobile == arg.PromoterMobile).Any());
+				query = query.Where(o => SqlFunc.Subqueryable<Account>().Where(a => a.Id == o.PromoterId && a.Mobile == arg.PromoterMobile).Any());
 			}
 			//状态
 			if (arg.Status.HasValue)

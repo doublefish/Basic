@@ -48,7 +48,6 @@ namespace WebApi.Background
 		{
 			options.SwaggerDoc("business", new OpenApiInfo { Title = "业务模块", Version = "v1", Description = "By Adai" });
 			options.SwaggerDoc("account", new OpenApiInfo { Title = "会员模块", Version = "v1", Description = "By Adai" });
-			options.SwaggerDoc("agent", new OpenApiInfo { Title = "代理商模块", Version = "v1", Description = "By Adai" });
 			options.SwaggerDoc("system", new OpenApiInfo { Title = "系统模块", Version = "v1", Description = "By Adai" });
 			options.SwaggerDoc("personal", new OpenApiInfo { Title = "个人中心", Version = "v1", Description = "By Adai" });
 			base.AddSwaggerGen(options);
@@ -62,7 +61,6 @@ namespace WebApi.Background
 		{
 			options.SwaggerEndpoint("/swagger/business/swagger.json", "接口文档-业务");
 			options.SwaggerEndpoint("/swagger/account/swagger.json", "接口文档-会员");
-			options.SwaggerEndpoint("/swagger/agent/swagger.json", "接口文档-代理商");
 			options.SwaggerEndpoint("/swagger/system/swagger.json", "接口文档-系统");
 			options.SwaggerEndpoint("/swagger/personal/swagger.json", "接口文档-个人中心");
 			base.UseSwaggerUI(options);

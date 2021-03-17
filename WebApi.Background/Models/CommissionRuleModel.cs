@@ -18,25 +18,15 @@ namespace WebApi.Background.Models
 		[Required]
 		public int Month { get; set; }
 		/// <summary>
-		/// 代理商佣金比例（优先级高于佣金金额）
+		/// 佣金比例（优先级高于佣金金额）
 		/// </summary>
 		[Required]
-		public decimal AgentRate { get; set; }
+		public decimal Rate { get; set; }
 		/// <summary>
-		/// 代理商佣金金额
+		/// 佣金金额
 		/// </summary>
 		[Required]
-		public decimal AgentAmount { get; set; }
-		/// <summary>
-		/// 个人佣金比例（优先级高于佣金金额）
-		/// </summary>
-		[Required]
-		public decimal PersonalRate { get; set; }
-		/// <summary>
-		/// 个人佣金金额
-		/// </summary>
-		[Required]
-		public decimal PersonalAmount { get; set; }
+		public decimal Amount { get; set; }
 		/// <summary>
 		/// 说明
 		/// </summary>

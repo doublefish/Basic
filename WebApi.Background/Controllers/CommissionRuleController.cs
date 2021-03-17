@@ -37,10 +37,8 @@ namespace WebApi.Background.Controllers
 					ProductId = productId.ToInt32(),
 					Year = model.Year,
 					Month = model.Month,
-					AgentRate = model.AgentRate,
-					AgentAmount = model.AgentAmount,
-					PersonalRate = model.PersonalRate,
-					PersonalAmount = model.PersonalAmount,
+					Rate = model.Rate,
+					Amount = model.Amount,
 					Note = model.Note
 				});
 			}
@@ -63,10 +61,8 @@ namespace WebApi.Background.Controllers
 				Id = id,
 				Year = model.Year,
 				Month = model.Month,
-				AgentRate = model.AgentRate,
-				AgentAmount = model.AgentAmount,
-				PersonalRate = model.PersonalRate,
-				PersonalAmount = model.PersonalAmount,
+				Rate = model.Rate,
+				Amount = model.Amount,
 				Note = model.Note
 			};
 			new CommissionRuleBLL(LoginInfo).Update(data);

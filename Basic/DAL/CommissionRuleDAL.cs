@@ -140,10 +140,8 @@ namespace Basic.DAL
 				"ProductId" => query.OrderBy(o => o.ProductId, orderByType),
 				"Year" => query.OrderBy(o => o.Year, orderByType).OrderBy(o => o.Month, orderByType),
 				"Month" => query.OrderBy(o => o.Year, orderByType).OrderBy(o => o.Month, orderByType),
-				"AgentRate" => query.OrderBy(o => o.AgentRate, orderByType),
-				"AgentAmount" => query.OrderBy(o => o.AgentAmount, orderByType),
-				"PersonalRate" => query.OrderBy(o => o.PersonalRate, orderByType),
-				"PersonalAmount" => query.OrderBy(o => o.PersonalAmount, orderByType),
+				"Rate" => query.OrderBy(o => o.Rate, orderByType),
+				"Amount" => query.OrderBy(o => o.Amount, orderByType),
 				"CreateTime" => query.OrderBy(o => o.CreateTime, orderByType),
 				"UpdateTime" => query.OrderBy(o => o.UpdateTime, orderByType),
 				_ => query.OrderBy(o => o.Id, orderByType)

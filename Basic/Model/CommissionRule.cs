@@ -36,32 +36,18 @@ namespace Basic.Model
 		public int Month { get; set; }
 
 		/// <summary>
-		/// Desc:代理商佣金比例
+		/// Desc:佣金比例
 		/// Default:
 		/// Nullable:False
 		/// </summary>
-		public decimal AgentRate { get; set; }
+		public decimal Rate { get; set; }
 
 		/// <summary>
-		/// Desc:代理商佣金金额
+		/// Desc:佣金金额
 		/// Default:
 		/// Nullable:False
 		/// </summary>
-		public decimal AgentAmount { get; set; }
-
-		/// <summary>
-		/// Desc:个人佣金比例
-		/// Default:
-		/// Nullable:False
-		/// </summary>
-		public decimal PersonalRate { get; set; }
-
-		/// <summary>
-		/// Desc:个人佣金金额
-		/// Default:
-		/// Nullable:False
-		/// </summary>
-		public decimal PersonalAmount { get; set; }
+		public decimal Amount { get; set; }
 
 		/// <summary>
 		/// Desc:状态

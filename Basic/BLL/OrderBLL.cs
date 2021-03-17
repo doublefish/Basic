@@ -165,6 +165,7 @@ namespace Basic.BLL
 		/// </summary>
 		/// <param name="id"></param>
 		/// <param name="orderCommission"></param>
+		/// <param name="accountCommission"></param>
 		private Order CalcCommission(int id, out OrderCommission orderCommission)
 		{
 			var result = Get(id, true);
@@ -177,9 +178,7 @@ namespace Basic.BLL
 				throw new CustomException("订单成交价格无效。");
 			}
 
-			//佣金记录
-			AccountCommission accountCommission = null;
-			AgentUserCommission agentUserCommission = null;
+			orderCommission = new OrderCommission();
 
 			//读取推广记录
 			var accountPromotion = new AccountPromotionBLL().GetByAccountId(result.AccountId, true);
@@ -192,83 +191,33 @@ namespace Basic.BLL
 					throw new CustomException("佣金规则未设置。");
 				}
 
-				//个人用户佣金
-				if (accountPromotion.PromoterId.HasValue)
+				//用户佣金
+				var accountCommission = new AccountCommission()
 				{
-					accountCommission = new AccountCommission()
-					{
-						AccountId = accountPromotion.PromoterId.Value,
-						OrderId = result.Id,
-						Status = Model.Config.Commission.Status.Paid,
-						CreateTime = DateTime.Now,
-						UpdateTime = DateTime.Now
-					};
-					if (commissionRule.PersonalRate > decimal.Zero)
-					{
-						accountCommission.Rate = commissionRule.PersonalRate;
-						accountCommission.Amount = result.TotalPrice.Value * commissionRule.PersonalRate;
-					}
-					else if (commissionRule.PersonalAmount > decimal.Zero)
-					{
-						accountCommission.Amount = commissionRule.PersonalAmount;
-					}
-					else
-					{
-						throw new CustomException("个人佣金规则未设置。");
-					}
-					//保留两位小数
-					accountCommission.Amount = decimal.Round(accountCommission.Amount, 2);
-				}
-				//代理商用户佣金
-				if (accountPromotion.AgentId.HasValue)
+					AccountId = accountPromotion.PromoterId,
+					OrderId = result.Id,
+					Status = Model.Config.Commission.Status.Paid,
+					CreateTime = DateTime.Now,
+					UpdateTime = DateTime.Now
+				};
+				if (commissionRule.Rate > decimal.Zero)
 				{
-					agentUserCommission = new AgentUserCommission()
-					{
-						OrderId = result.Id,
-						CreateTime = DateTime.Now,
-						UpdateTime = DateTime.Now
-					};
-
-					//读取代理商
-					var agent = new AgentBLL().Get(accountPromotion.AgentId.Value, true);
-					if (agent.ParentId > 0)
-					{
-						//发给一级代理商
-						agentUserCommission.AgentId = agent.ParentId;
-						agentUserCommission.AgentUserId = 0;
-						agentUserCommission.Status = Model.Config.Commission.Status.Paid;
-					}
-					else
-					{
-						//发给一级代理商业务员
-						agentUserCommission.AgentId = accountPromotion.AgentId.Value;
-						agentUserCommission.AgentUserId = accountPromotion.AgentUserId.Value;
-						agentUserCommission.Status = Model.Config.Commission.Status.Distributed;
-					}
-
-					if (commissionRule.AgentRate > decimal.Zero)
-					{
-						agentUserCommission.Rate = commissionRule.AgentRate;
-						agentUserCommission.Amount = result.TotalPrice.Value * commissionRule.AgentRate;
-					}
-					else if (commissionRule.AgentAmount > decimal.Zero)
-					{
-						agentUserCommission.Amount = commissionRule.AgentAmount;
-					}
-					else
-					{
-						throw new CustomException("代理商佣金规则未设置。");
-					}
-					//保留两位小数
-					agentUserCommission.Amount = decimal.Round(agentUserCommission.Amount, 2);
+					accountCommission.Rate = commissionRule.Rate;
+					accountCommission.Amount = result.TotalPrice.Value * commissionRule.Rate;
 				}
+				else if (commissionRule.Amount > decimal.Zero)
+				{
+					accountCommission.Amount = commissionRule.Amount;
+				}
+				else
+				{
+					throw new CustomException("个人佣金规则未设置。");
+				}
+				//保留两位小数
+				accountCommission.Amount = decimal.Round(accountCommission.Amount, 2);
+				orderCommission.AccountPromotion = accountPromotion;
+				orderCommission.AccountCommission = accountCommission;
 			}
-			orderCommission = new OrderCommission()
-			{
-				AccountPromotion = accountPromotion,
-				AccountCommission = accountCommission,
-				AgentUserCommission = agentUserCommission
-			};
 			return result;
 		}
 
@@ -282,7 +231,7 @@ namespace Basic.BLL
 			result.UserId = LoginInfo.Id;
 			result.Status = Model.Config.Order.Status.Completed;
 			result.UpdateTime = DateTime.Now;
-			Dal.Complete(result, orderCommission.AccountPromotion?.Id, orderCommission.AccountCommission, orderCommission.AgentUserCommission);
+			Dal.Complete(result, orderCommission.AccountPromotion?.Id, orderCommission.AccountCommission);
 		}
 
 		/// <summary>

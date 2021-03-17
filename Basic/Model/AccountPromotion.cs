@@ -22,25 +22,11 @@ namespace Basic.Model
 		public int AccountId { get; set; }
 
 		/// <summary>
-		/// Desc:代理商Id
-		/// Default:
-		/// Nullable:True
-		/// </summary>
-		public int? AgentId { get; set; }
-
-		/// <summary>
-		/// Desc:代理商用户Id
-		/// Default:
-		/// Nullable:True
-		/// </summary>
-		public int? AgentUserId { get; set; }
-
-		/// <summary>
 		/// Desc:推广人Id
 		/// Default:
 		/// Nullable:True
 		/// </summary>
-		public int? PromoterId { get; set; }
+		public int PromoterId { get; set; }
 
 		/// <summary>
 		/// Desc:订单数量

@@ -80,42 +80,17 @@ namespace Basic.BLL
 		public override void List(ICollection<AccountPromotion> list)
 		{
 			var accountIds = new HashSet<int>();
-			var agentIds = new HashSet<int>();
-			var agentUserIds = new HashSet<int>();
+			
 			foreach (var data in list)
 			{
 				accountIds.Add(data.AccountId);
-				if (data.PromoterId.HasValue)
-				{
-					accountIds.Add(data.PromoterId.Value);
-				}
-				if (data.AgentId.HasValue)
-				{
-					agentIds.Add(data.AgentId.Value);
-				}
-				if (data.AgentUserId.HasValue)
-				{
-					agentUserIds.Add(data.AgentUserId.Value);
-				}
+				accountIds.Add(data.PromoterId);
 			}
 			var accounts = new AccountBLL().ListByPks(accountIds, true);
-			var agents = new AgentBLL().ListByPks(agentIds, true);
-			var agentUsers = new AgentUserBLL().ListByPks(agentUserIds, true);
 			foreach (var data in list)
 			{
 				data.Account = accounts.Where(o => o.Id == data.AccountId).FirstOrDefault();
-				if (data.AgentId.HasValue)
-				{
-					data.Agent = agents.Where(o => o.Id == data.AgentId.Value).FirstOrDefault();
-				}
-				if (data.AgentUserId.HasValue)
-				{
-					data.AgentUser = agentUsers.Where(o => o.Id == data.AgentUserId.Value).FirstOrDefault();
-				}
-				if (data.PromoterId.HasValue)
-				{
-					data.Promoter = accounts.Where(o => o.Id == data.PromoterId.Value).FirstOrDefault();
-				}
+				data.Promoter = accounts.Where(o => o.Id == data.PromoterId).FirstOrDefault();
 			}
 		}
 
@@ -129,13 +104,6 @@ namespace Basic.BLL
 			{
 				case "Account":
 					arg.PromoterId = LoginInfo.Id;
-					break;
-				case "AgentUser":
-					arg.AgentId = LoginInfo.Data.AgentId;
-					if (!LoginInfo.Data.IsAdminOfAgent)
-					{
-						arg.AgentUserId = LoginInfo.Id;
-					}
 					break;
 				default: break;
 			}
@@ -165,25 +133,13 @@ namespace Basic.BLL
 			//推广代码优先
 			if (!string.IsNullOrEmpty(promoCode))
 			{
-				var agentUser = new AgentUserBLL().GetByPromoCode(promoCode);
-				if (agentUser != null)
-				{
-					var data = new AccountPromotion()
-					{
-						AgentId = agentUser.AgentId,
-						AgentUserId = agentUser.Id,
-						CreateTime = DateTime.Now
-					};
-					data.UpdateTime = data.CreateTime;
-					return data;
-				}
 				return null;
 			}
 			else if (personalId.HasValue)
 			{
 				var data = new AccountPromotion()
 				{
-					PromoterId = personalId,
+					PromoterId = personalId.Value,
 					CreateTime = DateTime.Now
 				};
 				data.UpdateTime = data.CreateTime;
@@ -191,8 +147,6 @@ namespace Basic.BLL
 				var parent = Dal.GetByAccountId(personalId.Value);
 				if (parent != null)
 				{
-					data.AgentId = parent.AgentId;
-					data.AgentUserId = parent.AgentUserId;
 				}
 				return data;
 			}

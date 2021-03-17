@@ -15,18 +15,6 @@ namespace Basic.Model
 		public Account Account { get; set; }
 
 		/// <summary>
-		/// 扩展.代理商
-		/// </summary>
-		[SugarColumn(IsIgnore = true)]
-		public Agent Agent { get; set; }
-
-		/// <summary>
-		/// 扩展.代理商用户
-		/// </summary>
-		[SugarColumn(IsIgnore = true)]
-		public AgentUser AgentUser { get; set; }
-
-		/// <summary>
 		/// 扩展.推广人
 		/// </summary>
 		[SugarColumn(IsIgnore = true)]

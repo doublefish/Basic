@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.ConsoleApp", "Test.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{2CFC393D-17C9-4DB9-AF52-DA69F5C0AB32}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Agent", "WebApi.Agent\WebApi.Agent.csproj", "{B0AB9DE6-AC9E-4814-B91D-4BE14EE51E3C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Background", "WebApi.Background\WebApi.Background.csproj", "{7683EBD4-1B3E-4A93-9601-5429CC11F9E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Common", "WebApi.Common\WebApi.Common.csproj", "{E30DA009-656F-40A8-B227-DBCC572C6CCE}"
@@ -19,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Foreground", "WebApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adai.Standard", "Adai.Standard\Adai.Standard.csproj", "{FBB2A104-907A-4DC8-BCE4-CEFCE99D1F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adai.Core", "Adai.Core\Adai.Core.csproj", "{7D86BCEB-4E13-42B9-A55B-D3F96BBF0FED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adai.Core", "Adai.Core\Adai.Core.csproj", "{7D86BCEB-4E13-42B9-A55B-D3F96BBF0FED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{2CFC393D-17C9-4DB9-AF52-DA69F5C0AB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CFC393D-17C9-4DB9-AF52-DA69F5C0AB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CFC393D-17C9-4DB9-AF52-DA69F5C0AB32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0AB9DE6-AC9E-4814-B91D-4BE14EE51E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0AB9DE6-AC9E-4814-B91D-4BE14EE51E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0AB9DE6-AC9E-4814-B91D-4BE14EE51E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0AB9DE6-AC9E-4814-B91D-4BE14EE51E3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7683EBD4-1B3E-4A93-9601-5429CC11F9E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7683EBD4-1B3E-4A93-9601-5429CC11F9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7683EBD4-1B3E-4A93-9601-5429CC11F9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU

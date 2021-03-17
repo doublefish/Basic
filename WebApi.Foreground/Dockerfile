@@ -7,23 +7,23 @@
 #
 #FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 #WORKDIR /src
-#COPY ["WebApi.Background/WebApi.Background.csproj", "WebApi.Background/"]
+#COPY ["WebApi.Foreground/WebApi.Foreground.csproj", "WebApi.Foreground/"]
 #COPY ["WebApi/WebApi.csproj", "WebApi/"]
 #COPY ["Basic/Basic.csproj", "Basic/"]
 #COPY ["Adai.Standard/Adai.Standard.csproj", "Adai.Standard/"]
 #COPY ["Adai.Core/Adai.Core.csproj", "Adai.Core/"]
-#RUN dotnet restore "WebApi.Background/WebApi.Background.csproj"
+#RUN dotnet restore "WebApi.Foreground/WebApi.Foreground.csproj"
 #COPY . .
-#WORKDIR "/src/WebApi.Background"
-#RUN dotnet build "WebApi.Background.csproj" -c Release -o /app/build
+#WORKDIR "/src/WebApi.Foreground"
+#RUN dotnet build "WebApi.Foreground.csproj" -c Release -o /app/build
 #
 #FROM build AS publish
-#RUN dotnet publish "WebApi.Background.csproj" -c Release -o /app/publish
+#RUN dotnet publish "WebApi.Foreground.csproj" -c Release -o /app/publish
 #
 #FROM base AS final
 #WORKDIR /app
 #COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "WebApi.Background.dll"]
+#ENTRYPOINT ["dotnet", "WebApi.Foreground.dll"]
 
 #引入镜像
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
@@ -37,4 +37,4 @@ EXPOSE 443
 #复制文件到工作目录
 COPY . /app
 #启动程序
-ENTRYPOINT ["dotnet", "WebApi.Background.dll"]
+ENTRYPOINT ["dotnet", "WebApi.Foreground.dll"]

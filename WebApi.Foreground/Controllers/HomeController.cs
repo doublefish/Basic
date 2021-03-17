@@ -169,32 +169,6 @@ namespace WebApi.Foreground.Controllers
 		}
 
 		/// <summary>
-		/// 查询目的地
-		/// </summary>
-		/// <param name="parentId">父节点Id</param>
-		/// <returns></returns>
-		[ApiAuthorize]
-		[HttpGet("ListDestination/{parentId}")]
-		public ReturnResult<ICollection<Destination>> ListDestination(int parentId = 0)
-		{
-			var results = new DestinationBLL(LoginInfo).ListByParentId(parentId, true);
-			return Json(results);
-		}
-
-		/// <summary>
-		/// 查询热门目的地
-		/// </summary>
-		/// <param name="take"></param>
-		/// <returns></returns>
-		[ApiAuthorize]
-		[HttpGet("ListHotDestination")]
-		public ReturnResult<ICollection<Destination>> ListHotDestination(int take = 10)
-		{
-			var results = new DestinationBLL(LoginInfo).ListByPopularIndex(take);
-			return Json(results);
-		}
-
-		/// <summary>
 		/// 查询所有银行
 		/// </summary>
 		/// <returns></returns>

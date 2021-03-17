@@ -13,9 +13,5 @@
 		/// 推广用户佣金
 		/// </summary>
 		public AccountCommission AccountCommission { get; set; }
-		/// <summary>
-		/// 代理商用户
-		/// </summary>
-		public AgentUserCommission AgentUserCommission { get; set; }
 	}
 }

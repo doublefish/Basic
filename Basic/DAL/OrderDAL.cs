@@ -149,7 +149,7 @@ namespace Basic.DAL
 		/// <param name="accountPromotionId"></param>
 		/// <param name="accountCommission"></param>
 		/// <param name="agentUserCommission"></param>
-		public void Complete(Order data, int? accountPromotionId = null, AccountCommission accountCommission = null, AgentUserCommission agentUserCommission = null)
+		public void Complete(Order data, int? accountPromotionId = null, AccountCommission accountCommission = null)
 		{
 			var propertyNames = new string[] { "UserId", "Status", "UpdateTime" };
 			try
@@ -170,10 +170,6 @@ namespace Basic.DAL
 					if (accountCommission != null)
 					{
 						AccountCommissionDAL.Add(Db, accountCommission);
-					}
-					if (agentUserCommission != null)
-					{
-						AgentUserCommissionDAL.Add(Db, agentUserCommission);
 					}
 				}
 				//删除缓存

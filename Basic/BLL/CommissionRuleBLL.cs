@@ -52,19 +52,11 @@ namespace Basic.BLL
 			{
 				return "相同记录（产品Id、年份、月份）已存在。";
 			}
-			if (data.AgentRate < decimal.Zero || data.AgentRate > decimal.One)
-			{
-				return "代理商佣金比例不能小于零且不能大于一。";
-			}
-			if (data.AgentAmount < decimal.Zero)
-			{
-				return "代理商佣金金额不能小于零。";
-			}
-			if (data.PersonalRate < decimal.Zero || data.PersonalRate > decimal.One)
+			if (data.Rate < decimal.Zero || data.Rate > decimal.One)
 			{
 				return "个人佣金比例不能小于零且不能大于一。";
 			}
-			if (data.PersonalAmount < decimal.Zero)
+			if (data.Amount < decimal.Zero)
 			{
 				return "个人佣金金额不能小于零。";
 			}

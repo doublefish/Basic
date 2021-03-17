@@ -54,7 +54,6 @@ namespace WebApi.Background.Controllers
 		{
 			var arg = new PromotionArg<AccountPromotion>(pageNumber, pageSize, sortName, sortType)
 			{
-				ByPersonal = true,
 				AccountId = accountId,
 				Username = username,
 				Mobile = mobile,

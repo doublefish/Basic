@@ -19,14 +19,6 @@
 		}
 
 		/// <summary>
-		/// 被代理商推广的
-		/// </summary>
-		public bool ByAgent { get; set; }
-		/// <summary>
-		/// 被个人用户推广的
-		/// </summary>
-		public bool ByPersonal { get; set; }
-		/// <summary>
 		/// 推广人Id
 		/// </summary>
 		public int? PromoterId { get; set; }

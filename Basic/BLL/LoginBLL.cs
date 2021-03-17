@@ -34,7 +34,6 @@ namespace Basic.BLL
 			var data = type switch
 			{
 				"Account" => new AccountBLL().SignIn(username, password),
-				"AgentUser" => new AgentUserBLL().SignIn(username, password),
 				"User" => new UserBLL().SignIn(username, password),
 				_ => throw new CustomException("用户类型标识无效。"),
 			};
