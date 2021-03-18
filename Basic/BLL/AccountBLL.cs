@@ -331,9 +331,9 @@ namespace Basic.BLL
 				var promotion = new AccountPromotionBLL().Create(promoCode, promoterId);
 				Dal.Add(data, password, promotion);
 			}
-			catch (Exception ex)
+			catch
 			{
-				throw ex;
+				throw;
 			}
 			finally
 			{

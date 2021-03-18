@@ -151,9 +151,13 @@ namespace Adai.Standard.Ext
 		/// <param name="value"></param>
 		/// <param name="error"></param>
 		/// <returns></returns>
-		public static int ObjToInt32(this RedisValue value, int error = int.MinValue)
+		public static int ToInt32(this RedisValue value, int error = int.MinValue)
 		{
-			return value.IsNullOrEmpty ? error : value.ToString().ToInt32(error);
+			if (value.IsNullOrEmpty || !value.IsInteger)
+			{
+				return error;
+			}
+			return value.TryParse(out int result) ? result : error;
 		}
 
 		/// <summary>
@@ -162,9 +166,13 @@ namespace Adai.Standard.Ext
 		/// <param name="value"></param>
 		/// <param name="error"></param>
 		/// <returns></returns>
-		public static long ObjToInt64(this RedisValue value, long error = long.MinValue)
+		public static long ToInt64(this RedisValue value, long error = long.MinValue)
 		{
-			return value.IsNullOrEmpty ? error : value.ToString().ToInt64(error);
+			if (value.IsNullOrEmpty)
+			{
+				return error;
+			}
+			return value.TryParse(out long result) ? result : error;
 		}
 	}
 }

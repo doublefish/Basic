@@ -54,7 +54,7 @@ namespace Basic
 				redis.HashSet(key, hashField, count);
 				redis.KeyExpire(key, DateTime.Now.AddDays(1));
 			}
-			count = redis.HashGet(key, hashField).ObjToInt32(0);
+			count = redis.HashGet(key, hashField).ToInt32(0);
 			count++;
 			var number = string.Format("{0}{1}", dateStr, count.ToString().Complete(8));
 			redis.HashSet(key, hashField, count);

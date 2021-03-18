@@ -276,10 +276,10 @@ namespace Basic.DAL
 
 				Db.Ado.CommitTran();
 			}
-			catch (Exception ex)
+			catch
 			{
 				Db.Ado.RollbackTran();
-				throw ex;
+				throw;
 			}
 		}
 
@@ -304,10 +304,10 @@ namespace Basic.DAL
 
 				Db.Ado.CommitTran();
 			}
-			catch (Exception ex)
+			catch
 			{
 				Db.Ado.RollbackTran();
-				throw ex;
+				throw;
 			}
 		}
 
@@ -328,10 +328,10 @@ namespace Basic.DAL
 
 				Db.Ado.CommitTran();
 			}
-			catch (Exception ex)
+			catch
 			{
 				Db.Ado.RollbackTran();
-				throw ex;
+				throw;
 			}
 		}
 
@@ -352,10 +352,10 @@ namespace Basic.DAL
 
 				Db.Ado.CommitTran();
 			}
-			catch (Exception ex)
+			catch
 			{
 				Db.Ado.RollbackTran();
-				throw ex;
+				throw;
 			}
 		}
 

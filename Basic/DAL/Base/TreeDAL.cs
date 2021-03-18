@@ -60,7 +60,7 @@ namespace Basic.DAL
 			{
 				var key = string.Format("{0}-Code", CacheKey);
 				var hashField = string.Format("{0}-{1}", parentId, code);
-				var pkValue = CacheDb.HashGet(key, hashField).ObjToInt();
+				var pkValue = CacheDb.HashGet(key, hashField).ToInt32();
 				if (pkValue <= 0)
 				{
 					var result = GetByCode(code, parentId, false);
@@ -94,7 +94,7 @@ namespace Basic.DAL
 			{
 				var key = string.Format("{0}-Name", CacheKey);
 				var hashField = string.Format("{0}-{1}", name, parentId);
-				var pkValue = CacheDb.HashGet(key, hashField).ObjToInt();
+				var pkValue = CacheDb.HashGet(key, hashField).ToInt32();
 				if (pkValue <= 0)
 				{
 					var result = GetByName(name, parentId, false);
@@ -231,7 +231,7 @@ namespace Basic.DAL
 					var datas = new Dictionary<int, bool>();
 					for (var i = 0; i < ids.Count; i++)
 					{
-						datas.Add(ids.ElementAt(i), values.ElementAt(i).ObjToInt32() == 1);
+						datas.Add(ids.ElementAt(i), values.ElementAt(i).ToInt32() == 1);
 					}
 					return datas;
 				}

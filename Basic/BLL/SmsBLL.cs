@@ -159,7 +159,7 @@ namespace Basic.BLL
 			{
 				data.Status = Model.Config.Sms.Status.Failed;
 				Log4netHelper.Error(string.Format("【短信发送报错】=>data={0}", JsonHelper.SerializeObject(data)), ex);
-				throw ex;
+				throw;
 			}
 			finally
 			{

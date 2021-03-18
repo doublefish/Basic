@@ -1,4 +1,5 @@
-﻿using Basic.Model;
+﻿using Adai.Standard.Ext;
+using Basic.Model;
 using Basic.Model.PageArg;
 using SqlSugar;
 using System;
@@ -52,7 +53,7 @@ namespace Basic.DAL
 			{
 				var key = string.Format("{0}-Section", CacheKey);
 				var hashField = section;
-				var pkValue = CacheDb.HashGet(key, hashField).ObjToInt();
+				var pkValue = CacheDb.HashGet(key, hashField).ToInt32();
 				if (pkValue <= 0)
 				{
 					var result = GetBySection(section, false);

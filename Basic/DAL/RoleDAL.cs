@@ -1,4 +1,5 @@
-﻿using Basic.Model;
+﻿using Adai.Standard.Ext;
+using Basic.Model;
 using Basic.Model.PageArg;
 using SqlSugar;
 using System;
@@ -23,7 +24,7 @@ namespace Basic.DAL
 			{
 				var key = string.Format("{0}-Code", CacheKey);
 				var hashField = code;
-				var pkValue = CacheDb.HashGet(key, hashField).ObjToInt();
+				var pkValue = CacheDb.HashGet(key, hashField).ToInt32();
 				if (pkValue <= 0)
 				{
 					var result = GetByCode(code, false);
@@ -50,7 +51,7 @@ namespace Basic.DAL
 			{
 				var key = string.Format("{0}-Name", CacheKey);
 				var hashField = name;
-				var pkValue = CacheDb.HashGet(key, hashField).ObjToInt();
+				var pkValue = CacheDb.HashGet(key, hashField).ToInt32();
 				if (pkValue <= 0)
 				{
 					var result = GetByName(name, false);

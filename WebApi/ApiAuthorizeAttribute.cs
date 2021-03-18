@@ -120,9 +120,9 @@ namespace WebApi
 			{
 				WriteLog(context.HttpContext);
 			}
-			catch (Exception ex)
+			catch
 			{
-				throw ex;
+				throw;
 			}
 			return base.OnActionExecutionAsync(context, next);
 		}
