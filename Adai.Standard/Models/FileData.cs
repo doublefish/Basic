@@ -1,4 +1,4 @@
-﻿namespace Adai.Core.Models
+﻿namespace Adai.Standard.Models
 {
 	/// <summary>
 	/// 上传文件

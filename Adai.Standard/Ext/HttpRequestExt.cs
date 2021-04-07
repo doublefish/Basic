@@ -1,13 +1,11 @@
-﻿using Adai.Standard;
-using Adai.Standard.Ext;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Adai.Core.Ext
+namespace Adai.Standard.Ext
 {
 	/// <summary>
 	/// HttpRequestExt

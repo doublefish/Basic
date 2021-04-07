@@ -1,6 +1,4 @@
-﻿using Adai.Core;
-using Adai.Core.Ext;
-using Adai.Standard;
+﻿using Adai.Standard;
 using Adai.Standard.Ext;
 using Adai.Standard.Models;
 using Microsoft.AspNetCore.Http;

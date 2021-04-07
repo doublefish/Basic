@@ -1,4 +1,4 @@
-﻿using Adai.Core;
+﻿using Adai.Standard;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
 

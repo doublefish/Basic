@@ -1,5 +1,4 @@
-﻿using Adai.Core.Models;
-using Adai.Standard;
+﻿using Adai.Standard.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using System;
@@ -13,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Adai.Core
+namespace Adai.Standard
 {
 	/// <summary>
 	/// FileHelper
