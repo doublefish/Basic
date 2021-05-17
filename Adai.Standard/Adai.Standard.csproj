@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Shuang Yu</Authors>
+    <Company>SY</Company>
+    <Description>常用方法封装</Description>
   </PropertyGroup>
 
   <ItemGroup>
