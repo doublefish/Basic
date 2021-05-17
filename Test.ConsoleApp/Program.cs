@@ -18,7 +18,6 @@ namespace Test.ConsoleApp
 			Console.WriteLine(string.Join(',', args));
 
 
-
 			Test(100);
 
 			Console.WriteLine("Press Any Key to continue...");

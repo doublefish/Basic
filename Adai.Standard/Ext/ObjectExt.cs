@@ -158,5 +158,130 @@ namespace Adai.Standard.Ext
 				}
 			}
 		}
+
+		/// <summary>
+		/// 赋值
+		/// </summary>
+		/// <param name="pi"></param>
+		/// <param name="data"></param>
+		/// <param name="value"></param>
+		public static void SetValue<T>(this T data, PropertyInfo pi, object value)
+		{
+			var fullName = pi.PropertyType.FullName;
+			switch (fullName)
+			{
+				case "System.Byte":
+					pi.SetValue(data, Convert.ToByte(value), null);
+					break;
+				case "System.Byte[]":
+					pi.SetValue(data, (byte[])value, null);
+					break;
+				case "System.SByte":
+					pi.SetValue(data, Convert.ToSByte(value), null);
+					break;
+				case "System.Char":
+					pi.SetValue(data, Convert.ToChar(value), null);
+					break;
+				case "System.String":
+					pi.SetValue(data, Convert.ToString(value), null);
+					break;
+				case "System.Int16":
+					pi.SetValue(data, Convert.ToInt16(value), null);
+					break;
+				case "System.Int32":
+					pi.SetValue(data, Convert.ToInt32(value), null);
+					break;
+				case "System.Int64":
+					pi.SetValue(data, Convert.ToInt64(value), null);
+					break;
+				case "System.UInt16":
+					pi.SetValue(data, Convert.ToUInt16(value), null);
+					break;
+				case "System.UInt32":
+					pi.SetValue(data, Convert.ToUInt32(value), null);
+					break;
+				case "System.UInt64":
+					pi.SetValue(data, Convert.ToUInt64(value), null);
+					break;
+				case "System.Boolean":
+					pi.SetValue(data, Convert.ToBoolean(value), null);
+					break;
+				case "System.Single":
+					pi.SetValue(data, Convert.ToSingle(value), null);
+					break;
+				case "System.Double":
+					pi.SetValue(data, Convert.ToDouble(value), null);
+					break;
+				case "System.Decimal":
+					pi.SetValue(data, Convert.ToDecimal(value), null);
+					break;
+				case "System.DateTime":
+					pi.SetValue(data, Convert.ToDateTime(value), null);
+					break;
+				default:
+					// 可空类型
+					if (fullName.IndexOf("System.Byte") >= 0)
+					{
+						pi.SetValue(data, Convert.ToByte(value), null);
+					}
+					else if (fullName.IndexOf("System.SByte") >= 0)
+					{
+						pi.SetValue(data, Convert.ToSByte(value), null);
+					}
+					else if (fullName.IndexOf("System.Char") >= 0)
+					{
+						pi.SetValue(data, Convert.ToChar(value), null);
+					}
+					else if (fullName.IndexOf("System.String") >= 0)
+					{
+						pi.SetValue(data, Convert.ToString(value), null);
+					}
+					else if (fullName.IndexOf("System.Int16") >= 0)
+					{
+						pi.SetValue(data, Convert.ToInt16(value), null);
+					}
+					else if (fullName.IndexOf("System.Int32") >= 0)
+					{
+						pi.SetValue(data, Convert.ToInt32(value), null);
+					}
+					else if (fullName.IndexOf("System.Int64") >= 0)
+					{
+						pi.SetValue(data, Convert.ToInt64(value), null);
+					}
+					else if (fullName.IndexOf("System.UInt16") >= 0)
+					{
+						pi.SetValue(data, Convert.ToUInt16(value), null);
+					}
+					else if (fullName.IndexOf("System.UInt32") >= 0)
+					{
+						pi.SetValue(data, Convert.ToUInt32(value), null);
+					}
+					else if (fullName.IndexOf("System.UInt64") >= 0)
+					{
+						pi.SetValue(data, Convert.ToUInt64(value), null);
+					}
+					else if (fullName.IndexOf("System.Boolean") >= 0)
+					{
+						pi.SetValue(data, Convert.ToBoolean(value), null);
+					}
+					else if (fullName.IndexOf("System.Single") >= 0)
+					{
+						pi.SetValue(data, Convert.ToSingle(value), null);
+					}
+					else if (fullName.IndexOf("System.Double") >= 0)
+					{
+						pi.SetValue(data, Convert.ToDouble(value), null);
+					}
+					else if (fullName.IndexOf("System.Decimal") >= 0)
+					{
+						pi.SetValue(data, Convert.ToDecimal(value), null);
+					}
+					else if (fullName.IndexOf("System.DateTime") >= 0)
+					{
+						pi.SetValue(data, Convert.ToDateTime(value), null);
+					}
+					break;
+			}
+		}
 	}
 }

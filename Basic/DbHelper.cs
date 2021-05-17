@@ -75,7 +75,7 @@ namespace Basic
 				JsonConfigHelper.Configuration.TryGetValue("CacheModel", out var obj);
 				if (obj == null)
 				{
-					return new string[] { };
+					return Array.Empty<string>();
 				}
 				return obj.ToString().Split(',');
 			}
