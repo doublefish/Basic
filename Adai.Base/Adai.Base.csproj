@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Shuang Yu</Authors>
+    <Company>SY</Company>
+    <Description>常用方法封装</Description>
+    <Copyright>SY</Copyright>
+  </PropertyGroup>
+
+</Project>

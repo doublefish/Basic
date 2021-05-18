@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic", "Basic\Basic.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Common", "WebApi.Common\WebApi.Common.csproj", "{F7FAFE72-AA87-4630-8FDB-209433C45B31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adai.Base", "Adai.Base\Adai.Base.csproj", "{B8B40BF6-F683-4B9D-9D44-371BD41EE2B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F7FAFE72-AA87-4630-8FDB-209433C45B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7FAFE72-AA87-4630-8FDB-209433C45B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7FAFE72-AA87-4630-8FDB-209433C45B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B40BF6-F683-4B9D-9D44-371BD41EE2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B40BF6-F683-4B9D-9D44-371BD41EE2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B40BF6-F683-4B9D-9D44-371BD41EE2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B40BF6-F683-4B9D-9D44-371BD41EE2B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
