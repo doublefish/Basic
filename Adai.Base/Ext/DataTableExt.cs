@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Adai.Base.Ext
 {
+	/// <summary>
+	/// DataTableExt
+	/// </summary>
 	public static class DataTableExt
 	{
 		/// <summary>

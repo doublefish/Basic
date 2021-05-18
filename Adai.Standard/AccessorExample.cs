@@ -1,4 +1,6 @@
-﻿namespace Adai.Standard
+﻿using Adai.Base;
+
+namespace Adai.Standard
 {
 	/// <summary>
 	/// AccessorExample

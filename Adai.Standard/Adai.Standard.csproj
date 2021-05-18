@@ -22,4 +22,8 @@
     <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Adai.Base\Adai.Base.csproj" />
+  </ItemGroup>
+
 </Project>

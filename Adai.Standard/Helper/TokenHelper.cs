@@ -1,4 +1,5 @@
-﻿using Adai.Standard.Ext;
+﻿using Adai.Base;
+using Adai.Standard.Ext;
 using Adai.Standard.Models;
 using System;
 

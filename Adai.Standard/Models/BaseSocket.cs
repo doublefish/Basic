@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adai.Base;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;

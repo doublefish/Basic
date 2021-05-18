@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Language
 	/// </summary>
-	public class Language : Models.Config<string>
+	public class Language : Base.Models.Config<string>
 	{
 		/// <summary>
 		/// 默认

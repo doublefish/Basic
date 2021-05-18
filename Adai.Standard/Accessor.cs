@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adai.Base;
+using System;
 using System.Linq.Expressions;
 
 namespace Adai.Standard
