@@ -21,10 +21,10 @@ namespace Adai.Base
 		/// </summary>
 		/// <param name="original">原文</param>
 		/// <param name="key">公钥/私钥</param>
-		/// <param name="strType">返回字符串类型</param>
+		/// <param name="stringType">返回字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string EncryptByXml(string original, string key, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string EncryptByXml(string original, string key, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -33,7 +33,7 @@ namespace Adai.Base
 			using var rsa = new RSACryptoServiceProvider();
 			RSAExt.FromXmlString(rsa, key);
 			var bytes = rsa.Encrypt(original, encode);
-			return strType switch
+			return stringType switch
 			{
 				StringType.Hex => HexHelper.ToHexString(bytes),
 				_ => Convert.ToBase64String(bytes),
@@ -45,10 +45,10 @@ namespace Adai.Base
 		/// </summary>
 		/// <param name="ciphertext">密文</param>
 		/// <param name="key">公钥/私钥</param>
-		/// <param name="strType">密文字符串类型</param>
+		/// <param name="stringType">密文字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string DecryptByXml(string ciphertext, string key, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string DecryptByXml(string ciphertext, string key, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -57,7 +57,7 @@ namespace Adai.Base
 			using var rsa = new RSACryptoServiceProvider();
 			RSAExt.FromXmlString(rsa, key);
 			byte[] bytes;
-			switch (strType)
+			switch (stringType)
 			{
 				case StringType.Hex:
 					bytes = HexHelper.ToBytes(ciphertext);
@@ -76,10 +76,10 @@ namespace Adai.Base
 		/// <param name="original">原文</param>
 		/// <param name="privateKey">私钥</param>
 		/// <param name="hashName">哈希算法名称</param>
-		/// <param name="strType">返回字符串类型</param>
+		/// <param name="stringType">返回字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string SignByXml(string original, string privateKey, string hashName = HashHalg.MD5, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string SignByXml(string original, string privateKey, string hashName = HashHalg.MD5, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -89,7 +89,7 @@ namespace Adai.Base
 			using var rsa = new RSACryptoServiceProvider();
 			RSAExt.FromXmlString(rsa, privateKey);
 			var bytes = rsa.SignData(buffer, hashName);
-			return strType switch
+			return stringType switch
 			{
 				StringType.Hex => HexHelper.ToHexString(bytes),
 				_ => Convert.ToBase64String(bytes),
@@ -103,17 +103,17 @@ namespace Adai.Base
 		/// <param name="data">需要验证的数据</param>
 		/// <param name="publicKey">公钥</param>
 		/// <param name="hashName">哈希算法名称</param>
-		/// <param name="strType">签名字符串类型</param>
+		/// <param name="stringType">签名字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static bool VerifyByXml(string sign, string data, string publicKey, string hashName = HashHalg.MD5, StringType strType = StringType.Base64, Encoding encode = null)
+		public static bool VerifyByXml(string sign, string data, string publicKey, string hashName = HashHalg.MD5, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
 				encode = Encoding.UTF8;
 			}
 			var buffer = encode.GetBytes(data);
-			var signature = strType switch
+			var signature = stringType switch
 			{
 				StringType.Hex => HexHelper.ToBytes(sign),
 				_ => Base64Helper.ToBytes(sign),
@@ -132,10 +132,10 @@ namespace Adai.Base
 		/// </summary>
 		/// <param name="original">原文</param>
 		/// <param name="publicKey">公钥</param>
-		/// <param name="strType">返回字符串类型</param>
+		/// <param name="stringType">返回字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string EncryptByPKCS8(string original, string publicKey, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string EncryptByPKCS8(string original, string publicKey, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -146,7 +146,7 @@ namespace Adai.Base
 			rsa.FromPKCS8PublicKey(publicKey);
 
 			var bytes = rsa.Encrypt(original, encode);
-			return strType switch
+			return stringType switch
 			{
 				StringType.Hex => HexHelper.ToHexString(bytes),
 				_ => Convert.ToBase64String(bytes),
@@ -158,10 +158,10 @@ namespace Adai.Base
 		/// </summary>
 		/// <param name="ciphertext">密文</param>
 		/// <param name="privateKey">私钥</param>
-		/// <param name="strType">密文字符串类型</param>
+		/// <param name="stringType">密文字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string DecryptByPKCS8(string ciphertext, string privateKey, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string DecryptByPKCS8(string ciphertext, string privateKey, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -170,7 +170,7 @@ namespace Adai.Base
 			using var rsa = new RSACryptoServiceProvider();
 			rsa.FromPKCS8PrivateKey(privateKey);
 			byte[] bytes;
-			switch (strType)
+			switch (stringType)
 			{
 				case StringType.Hex:
 					bytes = HexHelper.ToBytes(ciphertext);
@@ -190,10 +190,10 @@ namespace Adai.Base
 		/// <param name="original">原文</param>
 		/// <param name="privateKey">私钥</param>
 		/// <param name="hashName">哈希算法名称</param>
-		/// <param name="strType">返回字符串类型</param>
+		/// <param name="stringType">返回字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string SignByPKCS8(string original, string privateKey, string hashName = HashHalg.MD5, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string SignByPKCS8(string original, string privateKey, string hashName = HashHalg.MD5, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -203,7 +203,7 @@ namespace Adai.Base
 			using var rsa = new RSACryptoServiceProvider();
 			rsa.FromPKCS8PrivateKey(privateKey);
 			var bytes = rsa.SignData(buffer, hashName);
-			return strType switch
+			return stringType switch
 			{
 				StringType.Hex => HexHelper.ToHexString(bytes),
 				_ => Convert.ToBase64String(bytes),
@@ -217,17 +217,17 @@ namespace Adai.Base
 		/// <param name="data">需要验证的数据</param>
 		/// <param name="publicKey">公钥</param>
 		/// <param name="hashName">哈希算法名称</param>
-		/// <param name="strType">签名字符串类型</param>
+		/// <param name="stringType">签名字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static bool VerifyByPKCS8(string sign, string data, string publicKey, string hashName = HashHalg.MD5, StringType strType = StringType.Base64, Encoding encode = null)
+		public static bool VerifyByPKCS8(string sign, string data, string publicKey, string hashName = HashHalg.MD5, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
 				encode = Encoding.UTF8;
 			}
 			var buffer = encode.GetBytes(data);
-			var signature = strType switch
+			var signature = stringType switch
 			{
 				StringType.Hex => HexHelper.ToBytes(sign),
 				_ => Base64Helper.ToBytes(sign),
@@ -246,17 +246,17 @@ namespace Adai.Base
 		/// <param name="data">需要验证的数据</param>
 		/// <param name="cert">公钥证书</param>
 		/// <param name="hashName">哈希算法名称</param>
-		/// <param name="strType">签名字符串类型</param>
+		/// <param name="stringType">签名字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static bool VerifyByX509Certificate(string sign, string data, X509Certificate cert, string hashName = HashHalg.MD5, StringType strType = StringType.Base64, Encoding encode = null)
+		public static bool VerifyByX509Certificate(string sign, string data, X509Certificate cert, string hashName = HashHalg.MD5, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
 				encode = Encoding.UTF8;
 			}
 			var buffer = encode.GetBytes(data);
-			var signature = strType switch
+			var signature = stringType switch
 			{
 				StringType.Hex => HexHelper.ToBytes(sign),
 				_ => Base64Helper.ToBytes(sign),
@@ -398,7 +398,8 @@ namespace Adai.Base
 			}
 			finally
 			{
-				br.Close();
+				br.Dispose();
+				ms.Dispose();
 			}
 		}
 

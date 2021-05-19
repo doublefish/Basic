@@ -51,20 +51,23 @@ namespace Adai.Base.Ext
 		{
 			var bufferSize = rsa.KeySize / 8 - 11;
 			var buffer = new byte[bufferSize];
-			using MemoryStream inputStream = new MemoryStream(data), outputStream = new MemoryStream();
-			while (true)
+			var outputStream = new MemoryStream();
+			using (var inputStream = new MemoryStream(data))
 			{
-				//分段加密
-				var readSize = inputStream.Read(buffer, 0, bufferSize);
-				if (readSize <= 0)
+				while (true)
 				{
-					break;
-				}
+					//分段加密
+					var readSize = inputStream.Read(buffer, 0, bufferSize);
+					if (readSize <= 0)
+					{
+						break;
+					}
 
-				var temp = new byte[readSize];
-				Array.Copy(buffer, 0, temp, 0, readSize);
-				var bytes = rsa.Encrypt(temp, false);
-				outputStream.Write(bytes, 0, bytes.Length);
+					var temp = new byte[readSize];
+					Array.Copy(buffer, 0, temp, 0, readSize);
+					var bytes = rsa.Encrypt(temp, false);
+					outputStream.Write(bytes, 0, bytes.Length);
+				}
 			}
 			return outputStream.ToArray();
 		}
@@ -79,22 +82,24 @@ namespace Adai.Base.Ext
 		{
 			var bufferSize = rsa.KeySize / 8;
 			var buffer = new byte[bufferSize];
-			using MemoryStream inputStream = new MemoryStream(data), outputStream = new MemoryStream();
-			while (true)
+			using (MemoryStream inputStream = new MemoryStream(data), outputStream = new MemoryStream())
 			{
-				//分段加密
-				var readSize = inputStream.Read(buffer, 0, bufferSize);
-				if (readSize <= 0)
+				while (true)
 				{
-					break;
-				}
+					//分段加密
+					var readSize = inputStream.Read(buffer, 0, bufferSize);
+					if (readSize <= 0)
+					{
+						break;
+					}
 
-				var temp = new byte[readSize];
-				Array.Copy(buffer, 0, temp, 0, readSize);
-				var bytes = rsa.Decrypt(temp, false);
-				outputStream.Write(bytes, 0, bytes.Length);
+					var temp = new byte[readSize];
+					Array.Copy(buffer, 0, temp, 0, readSize);
+					var bytes = rsa.Decrypt(temp, false);
+					outputStream.Write(bytes, 0, bytes.Length);
+				}
+				return outputStream.ToArray();
 			}
-			return outputStream.ToArray();
 		}
 
 		/// <summary>

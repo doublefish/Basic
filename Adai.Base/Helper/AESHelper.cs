@@ -14,13 +14,12 @@ namespace Adai.Base
 		/// </summary>
 		/// <param name="original">原文</param>
 		/// <param name="key">密钥</param>
-		/// <param name="mode">运算模式</param>
 		/// <param name="iv">解密矢量：只有在CBC解密模式下才适用</param>
 		/// <param name="paddingMode">填充模式</param>
-		/// <param name="strType">返回字符串类型</param>
+		/// <param name="stringType">返回字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string RijndaelEncrypt(string original, string key, string iv, PaddingMode paddingMode = PaddingMode.PKCS7, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string RijndaelEncrypt(string original, string key, string iv, PaddingMode paddingMode = PaddingMode.PKCS7, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
@@ -36,7 +35,7 @@ namespace Adai.Base
 			};
 			var encryptor = rm.CreateEncryptor();
 			var bytes = encryptor.TransformFinalBlock(buffer, 0, buffer.Length);
-			return strType switch
+			return stringType switch
 			{
 				StringType.Hex => HexHelper.ToHexString(bytes),
 				_ => Convert.ToBase64String(bytes),
@@ -50,17 +49,17 @@ namespace Adai.Base
 		/// <param name="key">密钥</param>
 		/// <param name="iv">解密矢量：只有在CBC解密模式下才适用</param>
 		/// <param name="paddingMode">填充模式</param>
-		/// <param name="strType">字符串类型</param>
+		/// <param name="stringType">字符串类型</param>
 		/// <param name="encode">编码</param>
 		/// <returns></returns>
-		public static string RijndaelDecrypt(string ciphertext, string key, string iv, PaddingMode paddingMode = PaddingMode.PKCS7, StringType strType = StringType.Base64, Encoding encode = null)
+		public static string RijndaelDecrypt(string ciphertext, string key, string iv, PaddingMode paddingMode = PaddingMode.PKCS7, StringType stringType = StringType.Base64, Encoding encode = null)
 		{
 			if (encode == null)
 			{
 				encode = Encoding.UTF8;
 			}
 
-			var buffer = strType switch
+			var buffer = stringType switch
 			{
 				StringType.Hex => HexHelper.ToBytes(ciphertext),
 				_ => Base64Helper.ToBytes(ciphertext),
