@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Adai.Base
+namespace Adai.Security
 {
 	/// <summary>
 	/// X509CertificateHelper

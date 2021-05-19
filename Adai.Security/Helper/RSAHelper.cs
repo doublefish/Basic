@@ -1,11 +1,13 @@
-﻿using Adai.Base.Ext;
+﻿using Adai.Base;
+using Adai.Base.Ext;
+using Adai.Security.Ext;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace Adai.Base
+namespace Adai.Security
 {
 	/// <summary>
 	/// RSAHelper

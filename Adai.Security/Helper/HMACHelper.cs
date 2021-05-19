@@ -1,7 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using Adai.Base;
+using System.Security.Cryptography;
 using System.Text;
 
-namespace Adai.Base
+namespace Adai.Security
 {
 	/// <summary>
 	/// HMACHelper

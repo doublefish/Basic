@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Adai.Base;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 
-namespace Adai.Base.Ext
+namespace Adai.Security.Ext
 {
 	/// <summary>
 	/// RSAExt

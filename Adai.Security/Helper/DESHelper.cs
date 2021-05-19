@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Adai.Base;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Adai.Base
+namespace Adai.Security
 {
 	/// <summary>
 	/// DESExt
