@@ -8,4 +8,8 @@
     <Copyright>SY</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Helper\AESHelper.cs" />
+  </ItemGroup>
+
 </Project>

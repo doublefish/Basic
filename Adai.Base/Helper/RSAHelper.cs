@@ -516,5 +516,33 @@ namespace Adai.Base
 			binaryReader.BaseStream.Seek(-1, SeekOrigin.Current);//last ReadByte wasn't a removed zero, so back up a byte
 			return count;
 		}
+
+
+
+
+
+		/// <summary>
+		/// FromPKCS8PublicKey
+		/// </summary>
+		/// <param name="rsa"></param>
+		/// <param name="pkcs8String"></param>
+		/// <returns></returns>
+		public static void FromPKCS8PublicKey(this RSA rsa, string pkcs8String)
+		{
+			var parameters = ConvertPKCS8PublicKey(pkcs8String);
+			rsa.ImportParameters(parameters);
+		}
+
+		/// <summary>
+		/// FromPKCS8PrivateKey
+		/// </summary>
+		/// <param name="rsa"></param>
+		/// <param name="pkcs8String"></param>
+		/// <returns></returns>
+		public static void FromPKCS8PrivateKey(this RSA rsa, string pkcs8String)
+		{
+			var parameters = ConvertPKCS8PrivateKey(pkcs8String);
+			rsa.ImportParameters(parameters);
+		}
 	}
 }

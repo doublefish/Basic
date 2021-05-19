@@ -103,30 +103,6 @@ namespace Adai.Base.Ext
 		}
 
 		/// <summary>
-		/// FromPKCS8PublicKey
-		/// </summary>
-		/// <param name="rsa"></param>
-		/// <param name="pkcs8String"></param>
-		/// <returns></returns>
-		public static void FromPKCS8PublicKey(this RSA rsa, string pkcs8String)
-		{
-			var parameters = RSAHelper.ConvertPKCS8PublicKey(pkcs8String);
-			rsa.ImportParameters(parameters);
-		}
-
-		/// <summary>
-		/// FromPKCS8PrivateKey
-		/// </summary>
-		/// <param name="rsa"></param>
-		/// <param name="pkcs8String"></param>
-		/// <returns></returns>
-		public static void FromPKCS8PrivateKey(this RSA rsa, string pkcs8String)
-		{
-			var parameters = RSAHelper.ConvertPKCS8PrivateKey(pkcs8String);
-			rsa.ImportParameters(parameters);
-		}
-
-		/// <summary>
 		/// FromXmlString
 		/// </summary>
 		/// <param name="rsa"></param>
