@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Reflection;
 
 namespace Adai.Base.Ext
 {
@@ -20,7 +19,7 @@ namespace Adai.Base.Ext
 		public static ICollection<T> ToList<T>(this DataTable dataTable) where T : class
 		{
 			var type = typeof(T);
-			var columns = type.GetMappingProperties();
+			var columns = type.GetMappingRelations();
 			var list = new List<T>();
 			foreach (DataRow dataRow in dataTable.Rows)
 			{
@@ -45,7 +44,7 @@ namespace Adai.Base.Ext
 		public static ICollection<T> ToList<T>(this IDataReader dataReader) where T : class
 		{
 			var type = typeof(T);
-			var columns = type.GetMappingProperties();
+			var columns = type.GetMappingRelations();
 			var list = new List<T>();
 			while (dataReader.Read())
 			{
@@ -69,19 +68,19 @@ namespace Adai.Base.Ext
 		/// <param name="name"></param>
 		/// <param name="value"></param>
 		/// <param name="columns"></param>
-		private static void SetValue<T>(T data, string name, object value, IDictionary<string, PropertyInfo> columns) where T : class
+		private static void SetValue<T>(T data, string name, object value, ICollection<Attribute.TableColumnAttribute> columns) where T : class
 		{
-			columns.TryGetValue(name.ToUpper(), out var pi);
-			if (pi == null)
+			var column = columns.Where(o => o.Name == name.ToUpper()).FirstOrDefault();
+			if (column == null || column.PropertyInfo == null)
 			{
 			}
 			else if (value == DBNull.Value)
 			{
-				pi.SetValue(data, default);
+				column.PropertyInfo.SetValue(data, default);
 			}
 			else
 			{
-				data.SetValue(pi, value);
+				data.SetValue(column.PropertyInfo, value);
 			}
 		}
 
@@ -90,21 +89,21 @@ namespace Adai.Base.Ext
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <returns></returns>
-		public static IDictionary<string, PropertyInfo> GetMappingProperties<T>()
+		public static ICollection<Attribute.TableColumnAttribute> GetMappingRelations<T>()
 		{
-			return typeof(T).GetMappingProperties();
+			return typeof(T).GetMappingRelations();
 		}
 
 		/// <summary>
-		/// 读取映射
+		/// 读取映射关系
 		/// </summary>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		public static IDictionary<string, PropertyInfo> GetMappingProperties(this Type type)
+		public static ICollection<Attribute.TableColumnAttribute> GetMappingRelations(this Type type)
 		{
 			var typeOfColumn = typeof(Attribute.TableColumnAttribute);
 			var properties = type.GetProperties();
-			var dic = new Dictionary<string, PropertyInfo>();
+			var list = new List<Attribute.TableColumnAttribute>();
 			foreach (var pi in properties)
 			{
 				var tableColumnAttrs = pi.GetCustomAttributes(typeOfColumn, true);
@@ -113,9 +112,10 @@ namespace Adai.Base.Ext
 					continue;
 				}
 				var tableColumnAttr = tableColumnAttrs.FirstOrDefault() as Attribute.TableColumnAttribute;
-				dic.Add(tableColumnAttr.Name.ToUpper(), pi);
+				tableColumnAttr.PropertyInfo = pi;
+				list.Add(tableColumnAttr);
 			}
-			return dic;
+			return list;
 		}
 	}
 }

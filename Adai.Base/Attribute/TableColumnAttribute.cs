@@ -1,4 +1,6 @@
-﻿namespace Adai.Base.Attribute
+﻿using System.Reflection;
+
+namespace Adai.Base.Attribute
 {
 	/// <summary>
 	/// 列属性
@@ -24,5 +26,9 @@
 		/// 是否扩展字段
 		/// </summary>
 		public bool IsExtend { get; set; }
+		/// <summary>
+		/// PropertyInfo
+		/// </summary>
+		public PropertyInfo PropertyInfo { get; set; }
 	}
 }
