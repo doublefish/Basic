@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Adai.Standard.Models
+namespace Adai.Standard.Model
 {
 	/// <summary>
 	/// 查询条件

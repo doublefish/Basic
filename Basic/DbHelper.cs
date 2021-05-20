@@ -1,5 +1,5 @@
 ﻿using Adai.Standard;
-using Adai.Standard.Models;
+using Adai.Standard.Model;
 using SqlSugar;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,7 @@
-﻿using Adai.Standard;
+﻿using Adai.Base.Ext;
+using Adai.Standard;
 using Adai.Standard.Ext;
-using Adai.Standard.Models;
+using Adai.Standard.Model;
 using SqlSugar;
 using StackExchange.Redis;
 using System;
@@ -473,7 +474,7 @@ namespace Basic.DAL
 			//查询条件
 			query = Query(arg, query);
 			//排序方式
-			var orderByType = arg.SortType == Adai.Standard.Models.SortType.Asc ? OrderByType.Asc : OrderByType.Desc;
+			var orderByType = arg.SortType == Adai.Standard.Model.SortType.Asc ? OrderByType.Asc : OrderByType.Desc;
 			query = Sort(query, arg.SortName, orderByType);
 			//统计方式
 			if (arg.CountFlag != StatisticFlag.Not)

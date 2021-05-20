@@ -8,7 +8,7 @@
 		/// <summary>
 		/// 类型
 		/// </summary>
-		public class Type : Adai.Standard.Models.Config
+		public class Type : Adai.Base.Model.Config
 		{
 			/// <summary>
 			/// 跟团游
@@ -53,7 +53,7 @@
 			/// <summary>
 			/// 类型
 			/// </summary>
-			public class Type : Adai.Standard.Models.Config
+			public class Type : Adai.Base.Model.Config
 			{
 				/// <summary>
 				/// 交通

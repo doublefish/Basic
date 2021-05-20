@@ -1,6 +1,6 @@
 ﻿using Adai.Standard;
 using Adai.Standard.Ext;
-using Adai.Standard.Models;
+using Adai.Standard.Model;
 using Basic;
 using Basic.BLL;
 using Microsoft.AspNetCore.Hosting;

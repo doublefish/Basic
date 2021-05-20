@@ -1,4 +1,4 @@
-﻿using Adai.Standard.Models;
+﻿using Adai.Standard.Model;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
 using System;

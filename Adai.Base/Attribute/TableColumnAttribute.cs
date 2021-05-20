@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Adai.Base.Models
+﻿namespace Adai.Base.Attribute
 {
 	/// <summary>
 	/// 列属性
 	/// </summary>
-	public class TableColumnAttribute : Attribute
+	public class TableColumnAttribute : System.Attribute
 	{
 		/// <summary>
 		/// 构造函数

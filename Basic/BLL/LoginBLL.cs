@@ -1,5 +1,6 @@
-﻿using Adai.Standard;
-using Adai.Standard.Models;
+﻿using Adai.Base;
+using Adai.Standard;
+using Adai.Standard.Model;
 
 namespace Basic.BLL
 {

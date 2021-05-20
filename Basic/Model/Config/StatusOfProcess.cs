@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 流程状态
 	/// </summary>
-	public class StatusOfProcess : Adai.Standard.Models.Config
+	public class StatusOfProcess : Adai.Base.Model.Config
 	{
 		/// <summary>
 		/// 已申请

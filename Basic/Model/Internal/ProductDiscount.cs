@@ -1,4 +1,4 @@
-﻿using Adai.Standard;
+﻿using Adai.Base;
 using SqlSugar;
 using System;
 

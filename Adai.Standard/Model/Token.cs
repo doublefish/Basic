@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Adai.Standard.Models
+namespace Adai.Standard.Model
 {
 	/// <summary>
 	/// Token

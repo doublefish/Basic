@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 性别
 	/// </summary>
-	public class Sex : Adai.Standard.Models.Config
+	public class Sex : Adai.Base.Model.Config
 	{
 		/// <summary>
 		/// 男

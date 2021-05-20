@@ -1,4 +1,4 @@
-﻿namespace Adai.Standard.Models
+﻿namespace Adai.Standard.Model
 {
 	/// <summary>
 	/// 统计标识

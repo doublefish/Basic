@@ -1,5 +1,5 @@
-﻿using Adai.Standard;
-using Adai.Standard.Models;
+﻿using Adai.Base;
+using Adai.Standard.Model;
 using Basic.BLL;
 using Basic.Model;
 using Microsoft.AspNetCore.Mvc;

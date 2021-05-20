@@ -43,7 +43,7 @@
 		/// <summary>
 		/// 类别
 		/// </summary>
-		public class Type : Adai.Standard.Models.Config
+		public class Type : Adai.Base.Model.Config
 		{
 			/// <summary>
 			/// 注册
@@ -105,7 +105,7 @@
 		/// <summary>
 		/// 状态
 		/// </summary>
-		public class Status : Adai.Standard.Models.Config
+		public class Status : Adai.Base.Model.Config
 		{
 			/// <summary>
 			/// 成功

@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 充值
 	/// </summary>
-	public class Recharge : Adai.Standard.Models.Config
+	public class Recharge : Adai.Base.Model.Config
 	{
 		/// <summary>
 		/// 转账支付

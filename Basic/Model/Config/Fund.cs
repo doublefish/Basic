@@ -8,12 +8,12 @@
 		/// <summary>
 		/// 类型
 		/// </summary>
-		public class Type : Adai.Standard.Models.TreeConfig
+		public class Type : Adai.Base.Model.TreeConfig
 		{
 			/// <summary>
 			/// 收入
 			/// </summary>
-			public class Revenue : Adai.Standard.Models.Config
+			public class Revenue : Adai.Base.Model.Config
 			{
 				/// <summary>
 				/// 充值
@@ -37,7 +37,7 @@
 			/// <summary>
 			/// 支出
 			/// </summary>
-			public class Expenditure : Adai.Standard.Models.Config
+			public class Expenditure : Adai.Base.Model.Config
 			{
 				/// <summary>
 				/// 提现
@@ -58,8 +58,8 @@
 			/// </summary>
 			public Type()
 			{
-				Add("收入", Adai.Standard.ConfigIntHelper<Revenue>.KeyValuePairs);
-				Add("支出", Adai.Standard.ConfigIntHelper<Expenditure>.KeyValuePairs);
+				Add("收入", Adai.Base.ConfigIntHelper<Revenue>.KeyValuePairs);
+				Add("支出", Adai.Base.ConfigIntHelper<Expenditure>.KeyValuePairs);
 			}
 		}
 	}

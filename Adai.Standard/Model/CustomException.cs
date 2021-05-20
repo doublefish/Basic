@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace Adai.Standard.Models
+namespace Adai.Standard.Model
 {
 	/// <summary>
-	/// ApiException
+	/// CustomException
 	/// </summary>
-	public class ApiException : Exception
+	public class CustomException : Exception
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public ApiException() : this(string.Empty, null)
+		public CustomException() : this(string.Empty, null)
 		{
 		}
 
@@ -18,7 +18,7 @@ namespace Adai.Standard.Models
 		/// 构造函数
 		/// </summary>
 		/// <param name="message"></param>
-		public ApiException(string message) : this(message, null)
+		public CustomException(string message) : this(message, null)
 		{
 		}
 
@@ -27,7 +27,7 @@ namespace Adai.Standard.Models
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="inner"></param>
-		public ApiException(string message, Exception inner) : base(message, inner)
+		public CustomException(string message, Exception inner) : base(message, inner)
 		{
 		}
 	}

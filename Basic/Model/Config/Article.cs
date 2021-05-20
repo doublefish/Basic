@@ -35,7 +35,7 @@
 		/// <summary>
 		/// 状态
 		/// </summary>
-		public class Status : Adai.Standard.Models.Config
+		public class Status : Adai.Base.Model.Config
 		{
 			/// <summary>
 			/// 未发布

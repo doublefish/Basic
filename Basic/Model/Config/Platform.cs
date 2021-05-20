@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 平台
 	/// </summary>
-	public class Platform : Adai.Standard.Models.Config
+	public class Platform : Adai.Base.Model.Config
 	{
 		/// <summary>
 		/// Web

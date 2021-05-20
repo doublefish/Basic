@@ -1,8 +1,7 @@
-﻿using Adai.Standard;
+﻿using Adai.Base;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 
 namespace Basic

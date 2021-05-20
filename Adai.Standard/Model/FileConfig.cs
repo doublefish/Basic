@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Adai.Standard.Models
+namespace Adai.Standard.Model
 {
 	/// <summary>
 	/// 文件配置

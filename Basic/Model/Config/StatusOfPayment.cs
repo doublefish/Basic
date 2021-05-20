@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 付款状态
 	/// </summary>
-	public class StatusOfPayment : Adai.Standard.Models.Config
+	public class StatusOfPayment : Adai.Base.Model.Config
 	{
 		/// <summary>
 		/// 未支付

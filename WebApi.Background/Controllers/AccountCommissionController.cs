@@ -1,4 +1,5 @@
-﻿using Adai.Standard;
+﻿using Adai.Base;
+using Adai.Standard;
 using Basic.BLL;
 using Basic.Model;
 using Basic.Model.PageArg;

@@ -1,6 +1,7 @@
-﻿using Adai.Standard;
+﻿using Adai.Base.Ext;
+using Adai.Standard;
 using Adai.Standard.Ext;
-using Adai.Standard.Models;
+using Adai.Standard.Model;
 using Basic.Model;
 using System;
 using System.Collections.Generic;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Adai.Base.Ext
 {
@@ -103,7 +102,7 @@ namespace Adai.Base.Ext
 		/// <returns></returns>
 		public static IDictionary<string, PropertyInfo> GetMappingProperties(this Type type)
 		{
-			var typeOfColumn = typeof(Models.TableColumnAttribute);
+			var typeOfColumn = typeof(Attribute.TableColumnAttribute);
 			var properties = type.GetProperties();
 			var dic = new Dictionary<string, PropertyInfo>();
 			foreach (var pi in properties)
@@ -113,7 +112,7 @@ namespace Adai.Base.Ext
 				{
 					continue;
 				}
-				var tableColumnAttr = tableColumnAttrs.FirstOrDefault() as Models.TableColumnAttribute;
+				var tableColumnAttr = tableColumnAttrs.FirstOrDefault() as Attribute.TableColumnAttribute;
 				dic.Add(tableColumnAttr.Name.ToUpper(), pi);
 			}
 			return dic;

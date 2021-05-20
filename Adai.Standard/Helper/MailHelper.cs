@@ -1,4 +1,4 @@
-﻿using Adai.Standard.Models;
+﻿using Adai.Standard.Model;
 using System;
 using System.Net;
 using System.Net.Mail;

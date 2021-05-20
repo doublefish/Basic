@@ -1,4 +1,4 @@
-﻿using Adai.Base.Models;
+﻿using Adai.Base.Model;
 using System.Collections.Generic;
 
 namespace Adai.Base
