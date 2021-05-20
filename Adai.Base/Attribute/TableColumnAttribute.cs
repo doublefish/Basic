@@ -8,15 +8,21 @@
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		/// <param name="name"></param>
-		public TableColumnAttribute(string name)
+		/// <param name="name">名称</param>
+		/// <param name="isExtend">是否扩展</param>
+		public TableColumnAttribute(string name, bool isExtend = false)
 		{
 			Name = name;
+			IsExtend = isExtend;
 		}
 
 		/// <summary>
-		/// 列名
+		/// 名称
 		/// </summary>
 		public string Name { get; set; }
+		/// <summary>
+		/// 是否扩展字段
+		/// </summary>
+		public bool IsExtend { get; set; }
 	}
 }
