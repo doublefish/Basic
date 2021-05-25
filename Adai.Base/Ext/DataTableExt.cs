@@ -70,7 +70,7 @@ namespace Adai.Base.Ext
 		/// <param name="columns"></param>
 		private static void SetValue<T>(T data, string name, object value, ICollection<Attribute.TableColumnAttribute> columns) where T : class
 		{
-			var column = columns.Where(o => o.Name == name.ToUpper()).FirstOrDefault();
+			var column = columns.Get(name);
 			if (column == null || column.PropertyInfo == null)
 			{
 			}
@@ -116,6 +116,31 @@ namespace Adai.Base.Ext
 				list.Add(tableColumnAttr);
 			}
 			return list;
+		}
+
+		/// <summary>
+		/// 查询
+		/// </summary>
+		/// <param name="attributes"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public static Attribute.TableColumnAttribute Get(this ICollection<Attribute.TableColumnAttribute> attributes, string name)
+		{
+			Attribute.TableColumnAttribute attribute = null;
+			foreach (var attr in attributes)
+			{
+				if (string.Compare(attr.Name, name, StringComparison.OrdinalIgnoreCase) == 0)
+				{
+					attribute = attr;
+					break;
+				}
+				if (string.Compare(attr.PropertyInfo.Name, name, StringComparison.OrdinalIgnoreCase) == 0)
+				{
+					attribute = attr;
+					break;
+				}
+			}
+			return attribute;
 		}
 	}
 }

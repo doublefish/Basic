@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Common", "WebApi.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adai.Base", "Adai.Base\Adai.Base.csproj", "{B8B40BF6-F683-4B9D-9D44-371BD41EE2B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adai.Security", "Adai.Security\Adai.Security.csproj", "{0AB83D70-4353-4B7D-AA2B-5AEA5C33A6F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adai.Security", "Adai.Security\Adai.Security.csproj", "{0AB83D70-4353-4B7D-AA2B-5AEA5C33A6F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
