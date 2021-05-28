@@ -1,28 +1,23 @@
-﻿using System.Reflection;
-
-namespace Adai.Base.Attribute
+﻿namespace Adai.Base.Attribute
 {
 	/// <summary>
-	/// 表属性
+	/// 表里的列的特性
 	/// </summary>
-	public class TableAttribute : System.Attribute
+	public class TableColumnAttribute : CustomAttribute
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
 		/// <param name="name">名称</param>
-		public TableAttribute(string name)
+		/// <param name="isExtend">是否扩展</param>
+		public TableColumnAttribute(string name, bool isExtend = false) : base(name)
 		{
-			Name = name;
+			IsExtend = isExtend;
 		}
 
 		/// <summary>
-		/// 名称
+		/// 是否扩展字段
 		/// </summary>
-		public string Name { get; set; }
-		/// <summary>
-		/// 列的属性
-		/// </summary>
-		public PropertyInfo[] PropertyInfos { get; set; }
+		public bool IsExtend { get; set; }
 	}
 }

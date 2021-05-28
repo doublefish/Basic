@@ -6,7 +6,7 @@
     <Company>Adai</Company>
     <Description>常用方法封装</Description>
     <Copyright>Shuang Yu</Copyright>
-    <Version>1.0.0.3</Version>
+    <Version>1.0.0.4</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
