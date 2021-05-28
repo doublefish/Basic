@@ -9,15 +9,20 @@
 		/// 构造函数
 		/// </summary>
 		/// <param name="name">名称</param>
-		/// <param name="isExtend">是否扩展</param>
-		public TableColumnAttribute(string name, bool isExtend = false) : base(name)
+		/// <param name="Extend">扩展</param>
+		public TableColumnAttribute(string name, bool Extend = false) : base(name)
 		{
-			IsExtend = isExtend;
+			this.Extend = Extend;
 		}
 
 		/// <summary>
-		/// 是否扩展字段
+		/// 主键
 		/// </summary>
-		public bool IsExtend { get; set; }
+		public bool PrimaryKey { get; set; }
+
+		/// <summary>
+		/// 扩展字段
+		/// </summary>
+		public bool Extend { get; set; }
 	}
 }
