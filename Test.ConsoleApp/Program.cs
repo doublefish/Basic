@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Adai.Base;
+using Adai.Base.Attribute;
+using System;
 using System.Net.Sockets;
 using System.Text;
 
@@ -17,6 +19,8 @@ namespace Test.ConsoleApp
 		{
 			Console.WriteLine(string.Join(',', args));
 
+
+			var attrs = CustomAttributeHelper.GetPropertyAttributes<TableColumnAttribute>(typeof(Class1));
 
 			Test(100);
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace Adai.Base
 {
@@ -12,54 +11,26 @@ namespace Adai.Base
 		/// <summary>
 		/// 读取类的属性的的特性
 		/// </summary>
-		/// <typeparam name="T">类的类型</typeparam>
-		/// <typeparam name="A">类的属性的特性的类型</typeparam>
+		/// <typeparam name="T">类的属性的特性的类型</typeparam>
+		/// <param name="type">类的Type</param>
 		/// <returns></returns>
-		public static A[] GetPropertyAttributes<T, A>() where T : class where A : Attribute.CustomAttribute
+		public static T[] GetPropertyAttributes<T>(Type type) where T : Attribute.CustomAttribute
 		{
-			var properties = typeof(T).GetProperties();
-			var list = new List<A>();
-			var typeA = typeof(A);
+			var properties = type.GetProperties();
+			var list = new List<T>();
+			var typeA = typeof(T);
 			foreach (var pi in properties)
 			{
-				var attr = GetAttribute<A>(pi, typeA, true);
-				if (attr == null)
+				var attrs = pi.GetCustomAttributes(typeA, true);
+				if (attrs == null || attrs.Length == 0)
 				{
 					continue;
 				}
+				var attr = attrs[0] as T;
 				attr.Property = pi;
 				list.Add(attr);
 			}
 			return list.ToArray();
-		}
-
-		/// <summary>
-		/// 获取自定义特性
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="property"></param>
-		/// <param name="inherit"></param>
-		/// <returns></returns>
-		public static T GetAttribute<T>(PropertyInfo property, bool inherit) where T : Attribute.CustomAttribute
-		{
-			return GetAttribute<T>(property, typeof(T), inherit);
-		}
-
-		/// <summary>
-		/// 获取自定义特性
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="property"></param>
-		/// <param name="inherit"></param>
-		/// <returns></returns>
-		public static T GetAttribute<T>(PropertyInfo property, Type attributeType, bool inherit) where T : Attribute.CustomAttribute
-		{
-			var attrs = property.GetCustomAttributes(attributeType, inherit);
-			if (attrs == null || attrs.Length == 0)
-			{
-				return null;
-			}
-			return attrs[0] as T;
 		}
 
 		/// <summary>

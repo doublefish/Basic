@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 
 namespace Adai.Base
 {
@@ -16,10 +15,10 @@ namespace Adai.Base
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="dataTable"></param>
+		/// <param name="tableColumns"></param>
 		/// <returns></returns>
-		public static ICollection<T> ToList<T>(DataTable dataTable) where T : class
+		public static ICollection<T> ToList<T>(DataTable dataTable, Attribute.TableColumnAttribute[] tableColumns) where T : class
 		{
-			var columns = GetMappingRelations<T>();
 			var list = new List<T>();
 			foreach (DataRow dataRow in dataTable.Rows)
 			{
@@ -28,7 +27,7 @@ namespace Adai.Base
 				{
 					var name = dataColumn.ColumnName;
 					var value = dataRow[name];
-					SetValue(data, name, value, columns);
+					SetValue(data, name, value, tableColumns);
 				}
 				list.Add(data);
 			}
@@ -40,10 +39,10 @@ namespace Adai.Base
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="dataReader"></param>
+		/// <param name="tableColumns"></param>
 		/// <returns></returns>
-		public static ICollection<T> ToList<T>(IDataReader dataReader) where T : class
+		public static ICollection<T> ToList<T>(IDataReader dataReader, Attribute.TableColumnAttribute[] tableColumns) where T : class
 		{
-			var columns = GetMappingRelations<T>();
 			var list = new List<T>();
 			while (dataReader.Read())
 			{
@@ -52,21 +51,11 @@ namespace Adai.Base
 				{
 					var name = dataReader.GetName(i);
 					var value = dataReader[name];
-					SetValue(data, name, value, columns);
+					SetValue(data, name, value, tableColumns);
 				}
 				list.Add(data);
 			}
 			return list;
-		}
-
-		/// <summary>
-		/// 读取映射
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public static ICollection<Attribute.TableColumnAttribute> GetMappingRelations<T>() where T : class
-		{
-			return CustomAttributeHelper.GetPropertyAttributes<T, Attribute.TableColumnAttribute>();
 		}
 
 		/// <summary>
