@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Publish"  xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+	<PropertyGroup>
+		<NuGetSource Condition=" '$(NuGetSource)' == '' ">https://www.nuget.org oy2ideguum2b3towxyhaj7cqtkvueqwufaf3m7xzv5oupm</NuGetSource>
+		<SystemName>Adai.Base.FrameworkK</SystemName>
+		<SystemVersion>1.0.0.2</SystemVersion>
+		<SystemPackagePath>$(SystemName)Package</SystemPackagePath>
+		<ConfigurationMode>Debug</ConfigurationMode>
+	</PropertyGroup>
+	<Target Name="Publish" >
+		<Exec Command="nuget pack $(SystemName).nuspec"/>
+		<Exec Command="nuget push $(SystemName).$(SystemVersion).nupkg -Source $(NuGetSource)"/>
+	</Target>
+</Project>

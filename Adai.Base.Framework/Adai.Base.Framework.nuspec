@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Adai.Base.Framework</id>
+		<version>1.0.0.1</version>
+		<title>数据中转中心</title>
+		<authors>Shuang Yu</authors>
+		<owners>Adai</owners>
+		<licenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+		<projectUrl>https://github.com/doublefish/</projectUrl>
+		<description>Adai.Base</description>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright 2021</copyright>
+		<dependencies>
+		</dependencies>
+		<tags>Adai.Base</tags>
+	</metadata>
+	<files>
+		<file src="lib\**" target="lib/net461" />
+	</files>
+</package>
+

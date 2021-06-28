@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adai.Base", "Adai.Base\Adai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adai.Security", "Adai.Security\Adai.Security.csproj", "{0AB83D70-4353-4B7D-AA2B-5AEA5C33A6F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adai.Base.Framework", "Adai.Base.Framework\Adai.Base.Framework.csproj", "{66188920-230F-4283-8079-8DFB54215E1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{0AB83D70-4353-4B7D-AA2B-5AEA5C33A6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB83D70-4353-4B7D-AA2B-5AEA5C33A6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB83D70-4353-4B7D-AA2B-5AEA5C33A6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66188920-230F-4283-8079-8DFB54215E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66188920-230F-4283-8079-8DFB54215E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66188920-230F-4283-8079-8DFB54215E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66188920-230F-4283-8079-8DFB54215E1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
